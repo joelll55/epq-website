@@ -2,9 +2,9 @@
 import { RouterView } from 'vue-router'
 import { NConfigProvider, darkTheme } from 'naive-ui'
 import NavBar from './components/NavBar/Main.vue'
-import { settingsState } from './components/Settings/state.ts'
-import { customLightTheme } from './components/Theme/light.ts'
-import { customDarkTheme } from './components/Theme/dark.ts'
+import { settingsState } from './components/Settings/state'
+import { customLightTheme } from './components/Theme/light'
+import { customDarkTheme } from './components/Theme/dark'
 </script>
 
 <template>
