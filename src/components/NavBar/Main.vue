@@ -23,7 +23,7 @@
 	</n-layout>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { NCard, NDivider, NLayout, NLayoutContent, NLayoutSider, NIcon, NButton, NSpace, NTooltip, NSwitch } from 'naive-ui'
 import MathsIcon from '../Icons/MathsIcon.vue'
 import SettingsIcon from '../Icons/SettingsIcon.vue'
