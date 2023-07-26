@@ -1,9 +1,9 @@
 <template>
 	<n-layout has-sider>
-		<n-layout-sider :native-scrollbar="false" width="6%" content-style="max-height: 70px;"><MathsIcon @click="this.$router.push('/')" style="max-height: 70px" /> </n-layout-sider>
+		<n-layout-sider :native-scrollbar="false" width="6%" content-style="max-height: 70px;"><MathsIcon @click="$router.push('/')" style="max-height: 70px" /> </n-layout-sider>
 		<n-layout-content content-style="max-height: 70px;" :native-scrollbar="false"
 			><n-card>
-				<span class="title">EPQ Maths Website</span>
+				<span class="title">Maths Trainer</span>
 				<span style="margin-inline: 20%">
 					<span v-for="(route, index) in routes" :key="route.name">
 						<router-link :to="route.path" :class="currentRoute.path == route.path ? 'selected nav-element' : 'nav-element'">{{ route.name }}</router-link>
