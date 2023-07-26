@@ -1,6 +1,6 @@
 <template>
 	<n-layout has-sider>
-		<n-layout-sider :native-scrollbar="false" width="6%" content-style="max-height: 70px;"><MathsIcon style="max-height: 70px" /> </n-layout-sider>
+		<n-layout-sider :native-scrollbar="false" width="6%" content-style="max-height: 70px;"><MathsIcon @click="this.$router.push('/')" style="max-height: 70px" /> </n-layout-sider>
 		<n-layout-content content-style="max-height: 70px;" :native-scrollbar="false"
 			><n-card>
 				<span class="title">EPQ Maths Website</span>
