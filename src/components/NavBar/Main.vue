@@ -1,12 +1,12 @@
 <template>
 	<n-layout has-sider>
-		<n-layout-sider :native-scrollbar="false" width="6%" content-style="max-height: 70px;"><MathsIcon @click="$router.push('/')" style="max-height: 70px" /> </n-layout-sider>
+		<n-layout-sider :native-scrollbar="false" width="6%" class="test"><MathsIcon @click="$router.push('/')" style="max-height: 64px" /> </n-layout-sider>
 		<n-layout-content content-style="max-height: 70px;" :native-scrollbar="false"
 			><n-card>
 				<span class="title">Maths Trainer</span>
 				<span style="margin-inline: 20%">
 					<span v-for="(route, index) in routes" :key="route.name">
-						<router-link :to="route.path" :class="currentRoute.path == route.path ? 'selected nav-element' : 'nav-element'">{{ route.name }}</router-link>
+						<router-link :to="route.path" :class="$route.path == route.path ? 'selected nav-element' : 'nav-element'">{{ route.name }}</router-link>
 						<n-divider v-if="index != routes.length - 1" vertical />
 					</span> </span
 				><n-space />
@@ -30,10 +30,7 @@ import SettingsIcon from '../Icons/SettingsIcon.vue'
 import DarkIcon from '../Icons/DarkIcon.vue'
 import LightIcon from '../Icons/LightIcon.vue'
 import { routes } from '../../router/routes.ts'
-import { useRoute } from 'vue-router'
 import { settingsState } from '../Settings/state.ts'
-
-const currentRoute = useRoute()
 
 function toggleTheme() {
 	settingsState.isLightTheme = !settingsState.isLightTheme
@@ -58,5 +55,10 @@ function toggleTheme() {
 	font-size: medium;
 	font-weight: bold;
 	margin-inline: 0.5em;
+}
+
+.test {
+	max-height: 70px;
+	background-color: var(--background-color);
 }
 </style>
