@@ -1,6 +1,6 @@
 <template>
 	<n-layout has-sider>
-		<n-layout-sider :native-scrollbar="false" width="6%" class="test"><MathsIcon @click="$router.push('/')" style="max-height: 64px" /> </n-layout-sider>
+		<n-layout-sider :native-scrollbar="false" width="6%" class="bg-remove"><MathsIcon @click="$router.push('/')" style="max-height: 64px" /> </n-layout-sider>
 		<n-layout-content content-style="max-height: 70px;" :native-scrollbar="false"
 			><n-card>
 				<span class="title">Maths Trainer</span>
@@ -10,6 +10,12 @@
 						<n-divider v-if="index != routes.length - 1" vertical />
 					</span> </span
 				><n-space />
+				<!-- TODO - Only show this once logged in, display username -->
+				<n-tooltip placement="bottom-end" trigger="click" v-if="false"
+					><template #trigger
+						><n-button type="secondary" size="small" circle style="margin-right: 4px"
+							><n-icon><AccountIcon /></n-icon></n-button></template
+				></n-tooltip>
 				<n-tooltip placement="bottom-end" trigger="click"
 					><template #trigger
 						><n-button size="small" circle
@@ -17,8 +23,7 @@
 					><n-switch style="padding: 4px" @update:value="toggleTheme" :value="settingsState.isLightTheme"
 						><template #unchecked>Dark Theme</template><template #checked>Light Theme</template>
 						<template #unchecked-icon><DarkIcon /></template>
-						<template #checked-icon><LightIcon /></template> </n-switch
-				></n-tooltip> </n-card
+						<template #checked-icon><LightIcon /></template> </n-switch></n-tooltip></n-card
 		></n-layout-content>
 	</n-layout>
 </template>
@@ -31,6 +36,7 @@ import DarkIcon from '../Icons/DarkIcon.vue'
 import LightIcon from '../Icons/LightIcon.vue'
 import { routes } from '../../router/routes.ts'
 import { settingsState } from '../Settings/state.ts'
+import AccountIcon from '../Icons/AccountIcon.vue'
 
 function toggleTheme() {
 	settingsState.isLightTheme = !settingsState.isLightTheme
@@ -57,7 +63,7 @@ function toggleTheme() {
 	margin-inline: 0.5em;
 }
 
-.test {
+.bg-remove {
 	max-height: 70px;
 	background-color: var(--background-color);
 }
