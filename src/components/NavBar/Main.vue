@@ -11,11 +11,14 @@
 					</span> </span
 				><n-space />
 				<!-- TODO - Only show this once logged in, display username -->
-				<n-tooltip placement="bottom-end" trigger="click" v-if="false"
+				<n-tooltip placement="bottom-end" trigger="click" v-if="isLoggedIn"
 					><template #trigger
 						><n-button type="secondary" size="small" circle style="margin-right: 4px"
 							><n-icon><AccountIcon /></n-icon></n-button></template
-				></n-tooltip>
+					><n-space vertical
+						><span>Logged in as: {{ loggedInUser }}</span> <n-button type="error" @click="logOut">Log Out</n-button></n-space
+					></n-tooltip
+				>
 				<n-tooltip placement="bottom-end" trigger="click"
 					><template #trigger
 						><n-button size="small" circle
@@ -37,9 +40,15 @@ import LightIcon from '../Icons/LightIcon.vue'
 import { routes } from '../../router/routes.ts'
 import { settingsState } from '../Settings/state.ts'
 import AccountIcon from '../Icons/AccountIcon.vue'
+import { isLoggedIn, loggedInUser } from '../Login/isLoggedIn'
 
 function toggleTheme() {
 	settingsState.isLightTheme = !settingsState.isLightTheme
+}
+
+function logOut() {
+	isLoggedIn.value = false
+	loggedInUser.value = ''
 }
 </script>
 
