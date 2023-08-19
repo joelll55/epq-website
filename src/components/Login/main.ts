@@ -1,4 +1,5 @@
 import { isLoggedIn, loggedInUser } from './isLoggedIn'
+import { failedLoginMessage, hasFailedLogin } from './loginFailure'
 
 export async function userLoginRequest(username: string, password: string, createAccount = false) {
 	const request = {
@@ -23,15 +24,29 @@ export async function userLoginRequest(username: string, password: string, creat
 			console.log('Login successful')
 			isLoggedIn.value = true
 			loggedInUser.value = username
-			return true
-		case 'Username already exists':
-			console.log('Username already exists')
-			return false
-		case 'Login failed':
-			console.log('Login failed')
-			return false
-		default:
-			console.log('Unknown error')
-			return false
+			hasFailedLogin.value = false
+			failedLoginMessage.value = ''
+			break
+		case 'Username already exists': {
+			const message = 'Username already exists'
+			console.log(message)
+			hasFailedLogin.value = true
+			failedLoginMessage.value = message
+			break
+		}
+		case 'Login failed': {
+			const message = 'Invalid Username or Password'
+			console.log(message)
+			hasFailedLogin.value = true
+			failedLoginMessage.value = message
+			break
+		}
+		default: {
+			const message = 'Unknown error'
+			console.log(message)
+			hasFailedLogin.value = true
+			failedLoginMessage.value = message
+			break
+		}
 	}
 }

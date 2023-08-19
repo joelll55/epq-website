@@ -3,14 +3,18 @@
 		<!-- TODO: change this page when logged in -->
 		<n-layout class="main-layout">
 			<n-layout-content class="main-layout-content"
-				><n-space vertical align="center" item-style="width: 50%"
+				><n-space vertical align="center" item-style="width: 50%" v-if="!isLoggedIn"
 					><h1>Login/Register</h1>
 					<n-input type="text" placeholder="Username" v-model:value="username" />
 					<n-input type="password" show-password-on="click" placeholder="Password" v-model:value="password" />
+					<n-el tag="span" class="error-message" v-if="hasFailedLogin">{{ failedLoginMessage }}</n-el>
 					<n-space
 						><n-button type="primary" @click="login()" :loading="isLoading" :disabled="!validInput">Login</n-button
 						><n-button type="info" @click="register()" :loading="isLoading" :disabled="!validInput">Register</n-button></n-space
 					></n-space
+				>
+				<span style="font-size: 5rem" v-else
+					>Logged in as: <span style="font-weight: bold">{{ loggedInUser }}</span></span
 				>
 			</n-layout-content>
 		</n-layout>
@@ -18,8 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import { NLayout, NLayoutContent, NInput, NSpace, NButton } from 'naive-ui'
+import { NLayout, NLayoutContent, NInput, NSpace, NButton, NEl } from 'naive-ui'
 import { userLoginRequest } from '../components/Login/main'
+import { isLoggedIn, loggedInUser } from '../components/Login/isLoggedIn'
+import { hasFailedLogin, failedLoginMessage } from '../components/Login/loginFailure'
 import { computed, ref } from 'vue'
 
 const username = ref('')
@@ -49,5 +55,9 @@ async function register() {
 }
 .main-layout-content {
 	padding: 24px;
+}
+
+.error-message {
+	color: var(--error-color);
 }
 </style>
