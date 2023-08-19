@@ -1,6 +1,6 @@
 <template>
 	<n-layout has-sider class="main-layout">
-		<n-layout-sider> <n-image :src="props.image" lazy width="250" /> </n-layout-sider>
+		<n-layout-sider> <n-image :src="props.image" width="250" /> </n-layout-sider>
 		<n-layout-content class="main-layout-content"
 			><h2>{{ props.title }}</h2>
 			<p style="padding-bottom: 15px">
