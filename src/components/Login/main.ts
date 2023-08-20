@@ -15,7 +15,7 @@ export async function userLoginRequest(username: string, password: string, creat
 	}
 
 	// TODO: Change this to the real API
-	const res = await fetch('http://localhost:8000/login', request)
+	const res = await fetch('https://mathsepqwebsite.pagekite.me/login', request)
 	const jsonRes = await res.json()
 	jsonRes.message ??= 'Login failed'
 
