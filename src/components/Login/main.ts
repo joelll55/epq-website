@@ -1,4 +1,4 @@
-import { isLoggedIn, loggedInUser } from './isLoggedIn'
+import { isLoggedIn, loggedInUser, loggedInUserData } from './isLoggedIn'
 import { failedLoginMessage, hasFailedLogin } from './loginFailure'
 
 export async function userLoginRequest(username: string, password: string, createAccount = false) {
@@ -14,7 +14,6 @@ export async function userLoginRequest(username: string, password: string, creat
 		}
 	}
 
-	// TODO: Change this to the real API
 	const res = await fetch('https://mathsepqwebsite.pagekite.me/login', request)
 	const jsonRes = await res.json()
 	jsonRes.message ??= 'Login failed'
@@ -24,6 +23,7 @@ export async function userLoginRequest(username: string, password: string, creat
 			console.log('Login successful')
 			isLoggedIn.value = true
 			loggedInUser.value = username
+			loggedInUserData.value = jsonRes.userData
 			hasFailedLogin.value = false
 			failedLoginMessage.value = ''
 			break
