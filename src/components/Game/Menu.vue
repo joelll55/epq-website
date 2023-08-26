@@ -1,7 +1,7 @@
 <template>
 	<n-space item-style="padding-top: 15%;" vertical justify="space-around" align="center"
 		><n-space vertical>
-			<n-button text :disabled="!isLoggedIn" style="font-size: 98px">
+			<n-button text :disabled="!isLoggedIn" style="font-size: 98px" @click="currentGameState = 'starting'">
 				<!-- TODO: Make the colour change with theme -->
 				<n-icon color="#5BE046"><PlayIcon /></n-icon><span>Press to Play!</span></n-button
 			><n-el tag="span" class="error-message" v-if="!isLoggedIn" style="font-size: 32px">You must be logged in to play!</n-el>
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { NSpace, NButton, NIcon, NButtonGroup, NEl } from 'naive-ui'
 import PlayIcon from '../Icons/PlayIconFilled.vue'
-import { difficulty } from './gameState'
+import { currentGameState, difficulty } from './gameState'
 import { isLoggedIn } from '../Login/isLoggedIn'
 </script>
 

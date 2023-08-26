@@ -1,6 +1,6 @@
 import { Ref, ref } from 'vue'
 
-export type GameState = 'menu' | 'playing' | 'gameover'
+export type GameState = 'menu' | 'playing' | 'gameover' | 'starting'
 export const currentGameState: Ref<GameState> = ref('menu')
 
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
