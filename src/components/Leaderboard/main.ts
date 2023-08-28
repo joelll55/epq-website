@@ -1,7 +1,20 @@
-import { Ref, ref } from 'vue'
+export async function leaderboardRequest(mode: string, username?: string, score?: number, difficulty?: string) {
+	const request = {
+		method: 'POST',
+		body: JSON.stringify({
+			mode,
+			username,
+			score,
+			difficulty
+		}),
+		headers: {
+			'Content-type': 'text/plain'
+		}
+	}
 
-export const highestScore: Ref<number> = ref(0)
+	const res = await fetch('https://mathsepqwebsite.pagekite.me/leaderboard', request)
+	const jsonRes = await res.json()
+	console.log(jsonRes.message)
 
-export async function leaderboardRequest() {
-	return {}
+	return jsonRes.leaderboard
 }

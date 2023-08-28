@@ -16,11 +16,15 @@ import { currentGameState } from './gameState'
 import StartingGame from './StartingGame.vue'
 import { onMounted, onUnmounted } from 'vue'
 import { reset } from './InGame/start'
+import { refreshLeaderboard } from '../Leaderboard/refresh'
 
 // Reset when user click out of tab
-onMounted(() => {
+onMounted(async () => {
 	currentGameState.value = 'menu'
 	reset()
+
+	// Reload this here so latest high score is shown
+	await refreshLeaderboard()
 })
 onUnmounted(() => {
 	currentGameState.value = 'menu'

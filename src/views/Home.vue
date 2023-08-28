@@ -4,11 +4,7 @@
 		<n-layout has-sider class="main-layout" sider-placement="right">
 			<n-layout-content class="main-layout-content"
 				><h1>Maths Trainer</h1>
-				<p style="padding-bottom: 15px">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-					occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
+				<p style="padding-bottom: 15px">Hi! Welcome to Maths Trainer where you will practice your maths skills and compete with others to be the best. Have fun!</p>
 				<n-button @click="$router.push('/play')" style="margin-right: 20px" type="primary" size="large"
 					><template #icon><PlayIcon /></template><span>Play!</span></n-button
 				>
@@ -16,7 +12,7 @@
 					><template #icon><LeaderboardIcon /></template><span>View Leaderboard</span></n-button
 				>
 			</n-layout-content>
-			<n-layout-sider> IMAGE PLACEHOLDER </n-layout-sider>
+			<n-layout-sider class="bg-remove"><MathsIcon /></n-layout-sider>
 		</n-layout>
 
 		<n-divider />
@@ -31,6 +27,7 @@ import PlayIcon from '../components/Icons/PlayIcon.vue'
 import LeaderboardIcon from '../components/Icons/LeaderboardIcon.vue'
 import Feature from '../components/Features/Main.vue'
 import { homePageFeatures } from '../components/Features/features'
+import MathsIcon from '../components/Icons/MathsIcon.vue'
 </script>
 
 <style scoped>
@@ -43,5 +40,9 @@ import { homePageFeatures } from '../components/Features/features'
 }
 h1 {
 	font-size: 5em;
+}
+
+.bg-remove {
+	background-color: var(--background-color);
 }
 </style>

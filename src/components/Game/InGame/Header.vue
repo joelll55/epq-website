@@ -4,7 +4,7 @@
 			><n-progress
 				:status="score < 5 ? 'error' : 'success'"
 				type="line"
-				:percentage="Math.round((score / Math.max(highestScore, 5)) * 100)"
+				:percentage="Math.round((score / Math.max(leaderboardState.highestScore[difficulty], 5)) * 100)"
 				:indicator-text-color="themeVars.textColor1"
 				:height="32"
 				:border-radius="4"
@@ -21,14 +21,15 @@
 
 <script setup lang="ts">
 import { NProgress, NLayout, NLayoutContent, NLayoutSider, useThemeVars } from 'naive-ui'
-import { gameTime, currentGameState, score } from '../gameState'
+import { gameTime, currentGameState, score, difficulty, pregameUserHighScore, pregameHighestScore } from '../gameState'
 import { onMounted } from 'vue'
 import { msToTime } from '../../../utils/msToTime'
-import { highestScore } from '../../Leaderboard/main'
+import { leaderboardState } from '../../Leaderboard/state'
+import { loggedInUser } from '../../Login/isLoggedIn'
 
 const themeVars = useThemeVars()
 
-onMounted(() => {
+onMounted(async () => {
 	// Start game clock
 	const intervalId = setInterval(() => {
 		gameTime.value -= 100
@@ -38,6 +39,10 @@ onMounted(() => {
 			clearInterval(intervalId)
 		}
 	}, 100)
+
+	pregameUserHighScore.value = leaderboardState.data[difficulty.value].find((user) => user.username === loggedInUser.value)?.score ?? 0
+	pregameHighestScore.value = leaderboardState.highestScore[difficulty.value]
+	console.log('pregame vals', pregameUserHighScore.value, pregameHighestScore.value)
 })
 </script>
 

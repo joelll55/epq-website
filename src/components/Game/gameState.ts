@@ -28,3 +28,7 @@ export const currentQuestionKatex: Ref<string> = ref('')
  * The answer to the current question
  */
 export const currentQuestionAnswer: Ref<string> = ref('')
+
+export const pregameUserHighScore: Ref<number> = ref(0)
+
+export const pregameHighestScore: Ref<number> = ref(0)

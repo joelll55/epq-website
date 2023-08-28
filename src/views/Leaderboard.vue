@@ -1,28 +1,28 @@
 <template>
-	<div>
-		<n-tabs type="segment">
-			<n-tab-pane name="beginner" tab="Beginner"><n-data-table :columns="columns" :data="beginnerData"></n-data-table></n-tab-pane>
-			<n-tab-pane name="intermediate" tab="Intermediate"><n-data-table :columns="columns" :data="intermediateData"></n-data-table></n-tab-pane>
-			<n-tab-pane name="advanced" tab="Advanced"><n-data-table :columns="columns" :data="advancedData"></n-data-table></n-tab-pane>
-		</n-tabs>
-	</div>
+	<n-tabs type="segment">
+		<n-tab-pane name="beginner" tab="Beginner"><n-data-table :columns="columns" :data="leaderboardState.data['beginner']" :row-class-name="isUserClass"></n-data-table></n-tab-pane>
+		<n-tab-pane name="intermediate" tab="Intermediate"><n-data-table :columns="columns" :data="leaderboardState.data['intermediate']" :row-class-name="isUserClass"></n-data-table></n-tab-pane>
+		<n-tab-pane name="advanced" tab="Advanced"><n-data-table :columns="columns" :data="leaderboardState.data['advanced']" :row-class-name="isUserClass"></n-data-table></n-tab-pane>
+	</n-tabs>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { NDataTable, NTabs, NTabPane } from 'naive-ui'
+import { leaderboardState } from '../components/Leaderboard/state'
+import { refreshLeaderboard } from '../components/Leaderboard/refresh'
+import { RowData } from 'naive-ui/es/data-table/src/interface'
+import { loggedInUser } from '../components/Login/isLoggedIn'
 
-const beginnerData = [{ rank: 1, name: 'test', score: 10000 }]
-const intermediateData = [
-	{ rank: 1, name: 'test', score: 1000 },
-	{ rank: 2, name: 'test1', score: 500 }
-]
-const advancedData = [{ rank: 1, name: 'test', score: 100 }]
-
-onMounted(() => {
-	console.log('Load Leaderboard')
-	// TODO: load leaderboard from server
+onMounted(async () => {
+	await refreshLeaderboard()
 })
+
+function isUserClass(row: RowData) {
+	console.log(row.username === loggedInUser.value)
+	if (row.username === loggedInUser.value) return 'is-user'
+	else return ''
+}
 
 const columns = [
 	{
@@ -31,7 +31,7 @@ const columns = [
 	},
 	{
 		title: 'Name',
-		key: 'name'
+		key: 'username'
 	},
 	{
 		title: 'Score',
@@ -39,3 +39,11 @@ const columns = [
 	}
 ]
 </script>
+
+<style scoped>
+:deep(.is-user td) {
+	font-weight: bold !important;
+	text-decoration: dotted !important;
+	text-decoration-line: underline !important;
+}
+</style>

@@ -37,12 +37,16 @@ export function generateQuestion() {
 	}
 
 	// 3 Generate the question
-	// 3.1 For each part of the equation choose a random operation
+	// 3.1 Filter down operations to ones that make sense for the question length (e.g. cant just be a + or -)
 	const limitedOperations = operations.filter((operation) => {
 		if (numberOfParts === 1) {
 			return operation === 'log' || operation === 'sqrt' || operation === '^' || operation === 'sin' || operation === 'cos' || operation === 'tan' || operation === '/'
 		} else return true
 	})
+	// 3.2 Loop through parts and build question
+	// - for each part an operation is chosen random numbers are generated and inserted into the question using the operation
+	// - the insertIndex is used to keep track of where the next part should be inserted
+	// - lastPartBracket is used to keep track of whether the last part was a bracket (so that the next part should not be prefixed with a +)
 	let insertIndex = 0
 	let lastPartBracket = false
 	for (let i = 0; i < numberOfParts; i++) {
@@ -76,6 +80,7 @@ export function generateQuestion() {
 				break
 			}
 			case '/': {
+				// Fractions are carefully generated using the lowest common multiple of random numbers to ensure the fraction works out to be a whole number
 				const random4 = Math.floor(Math.random() * 16) + 1
 				const random5 = Math.floor(Math.random() * 13) + 1
 				const numerator = lcm(random4, random5)
@@ -108,6 +113,7 @@ export function generateQuestion() {
 				break
 			}
 			case 'sin': {
+				// Trig functions are chosen from a small variety to ensure they are rational values that can be worked out without a calculator
 				const exactSineEquations = ['\\sin{0}', '\\sin{\\frac{PI}{6}}', '\\sin{\\frac{PI}{2}}']
 				const random7 = Math.floor(Math.random() * exactSineEquations.length)
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${exactSineEquations[random7]}}` + question.substring(insertIndex)
@@ -116,6 +122,7 @@ export function generateQuestion() {
 				break
 			}
 			case 'cos': {
+				// Trig functions are chosen from a small variety to ensure they are rational values that can be worked out without a calculator
 				const exactSineEquations = ['\\cos{0}', '\\cos{\\frac{PI}{6}}', '\\cos{\\frac{PI}{2}}']
 				const random8 = Math.floor(Math.random() * exactSineEquations.length)
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${exactSineEquations[random8]}}` + question.substring(insertIndex)
@@ -124,6 +131,7 @@ export function generateQuestion() {
 				break
 			}
 			case 'tan': {
+				// Trig functions are chosen from a small variety to ensure they are rational values that can be worked out without a calculator
 				const exactSineEquations = ['\\tan{0}', `\\tan{\\frac{PI}{4}}`]
 				const random9 = Math.floor(Math.random() * exactSineEquations.length)
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${exactSineEquations[random9]}}` + question.substring(insertIndex)
@@ -134,8 +142,9 @@ export function generateQuestion() {
 		}
 	}
 
+	// Evaluate answer using evaluatex
 	const answer = evaluatex(question, {}, { latex: true })()
-	// Fix format from evalutex for katex
+	// Many replaceAll calls are used to convert the format of the question from the latex/ascii format that evalutex uses to the latex format that katex uses
 	question = question
 		.replaceAll(`\\frac{PI}{6}`, '30')
 		.replaceAll(`\\frac{PI}{4}`, '45')
