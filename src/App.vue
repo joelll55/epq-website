@@ -1,7 +1,8 @@
 <template>
 	<!-- TODO: create a custom colour theme -->
-	<n-config-provider :theme="settingsState.isLightTheme ? null : darkTheme" :theme-overrides="settingsState.isLightTheme ? customLightTheme : darkTheme">
+	<n-config-provider :theme="settingsState.isLightTheme ? null : darkTheme" :theme-overrides="settingsState.isLightTheme ? customLightTheme : darkTheme" :katex="katex">
 		<n-global-style />
+		<!-- GLOBAL KEYBINDS -->
 		<div>
 			<!-- Header -->
 			<NavBar />
@@ -19,6 +20,7 @@ import NavBar from './components/NavBar/Main.vue'
 import { settingsState } from './components/Settings/state'
 import { customLightTheme } from './components/Theme/light'
 import { customDarkTheme } from './components/Theme/dark'
+import katex from 'katex'
 </script>
 
 <style scoped></style>

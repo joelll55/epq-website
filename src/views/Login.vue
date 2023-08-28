@@ -26,7 +26,8 @@ import { NLayout, NLayoutContent, NInput, NSpace, NButton, NEl } from 'naive-ui'
 import { userLoginRequest } from '../components/Login/main'
 import { isLoggedIn, loggedInUser } from '../components/Login/isLoggedIn'
 import { hasFailedLogin, failedLoginMessage } from '../components/Login/loginFailure'
-import { computed, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { activeKeyUpListeners } from '../components/Keybinds/listeners'
 
 const username = ref('')
 const password = ref('')
@@ -46,6 +47,31 @@ async function register() {
 	await userLoginRequest(username.value, password.value, true)
 	isLoading.value = false
 }
+
+// Add keybind for enter key
+onMounted(() => {
+	const enterListener = (e: KeyboardEvent) => {
+		if (e.key === 'Enter' && validInput.value) {
+			login()
+		}
+	}
+	window.addEventListener('keyup', enterListener)
+	activeKeyUpListeners.push(enterListener)
+})
+
+// Remove keybind when either logged in or user goes off page
+onUnmounted(() => {
+	for (const listener of activeKeyUpListeners) {
+		window.removeEventListener('keyup', listener)
+	}
+})
+watch(isLoggedIn, (newValue) => {
+	if (newValue) {
+		for (const listener of activeKeyUpListeners) {
+			window.removeEventListener('keyup', listener)
+		}
+	}
+})
 </script>
 
 <style scoped>

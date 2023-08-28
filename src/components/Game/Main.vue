@@ -14,10 +14,16 @@ import InGame from './InGame/Main.vue'
 
 import { currentGameState } from './gameState'
 import StartingGame from './StartingGame.vue'
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+import { reset } from './InGame/start'
 
 // Reset when user click out of tab
 onMounted(() => {
 	currentGameState.value = 'menu'
+	reset()
+})
+onUnmounted(() => {
+	currentGameState.value = 'menu'
+	reset()
 })
 </script>
