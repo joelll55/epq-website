@@ -1,6 +1,6 @@
 <template>
 	<!-- TODO: create a custom colour theme -->
-	<n-config-provider :theme="settingsState.isLightTheme ? null : darkTheme" :theme-overrides="settingsState.isLightTheme ? customLightTheme : darkTheme" :katex="katex">
+	<n-config-provider :theme="settingsState.isLightTheme ? null : darkTheme" :theme-overrides="settingsState.isLightTheme ? customLightTheme : customDarkTheme" :katex="katex">
 		<n-global-style />
 		<!-- GLOBAL KEYBINDS -->
 		<div>
