@@ -123,7 +123,7 @@ export function generateQuestion() {
 			}
 			case 'cos': {
 				// Trig functions are chosen from a small variety to ensure they are rational values that can be worked out without a calculator
-				const exactSineEquations = ['\\cos{0}', '\\cos{\\frac{PI}{6}}', '\\cos{\\frac{PI}{2}}']
+				const exactSineEquations = ['\\cos{0}', '\\cos{\\frac{PI}{3}}', '\\cos{\\frac{PI}{2}}']
 				const random8 = Math.floor(Math.random() * exactSineEquations.length)
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${exactSineEquations[random8]}}` + question.substring(insertIndex)
 				insertIndex = question.length
@@ -149,6 +149,7 @@ export function generateQuestion() {
 		.replaceAll(`\\frac{PI}{6}`, '30')
 		.replaceAll(`\\frac{PI}{4}`, '45')
 		.replaceAll(`\\frac{PI}{2}`, '90')
+		.replaceAll(`\\frac{PI}{3}`, '60')
 		.replaceAll(/logn\((\d*),(\d*)\)/g, '\\log_{$2}{$1}')
 		.replaceAll(`PI`, '180')
 
