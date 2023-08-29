@@ -2,8 +2,7 @@
 	<n-space item-style="padding-top: 10%;" vertical justify="space-between" align="center"
 		><n-space vertical>
 			<n-button text :disabled="!isLoggedIn" style="font-size: 98px" @click="currentGameState = 'starting'">
-				<!-- TODO: Make the colour change with theme -->
-				<n-icon color="#5BE046"><PlayIcon /></n-icon><span>Press to Play!</span></n-button
+				<n-icon :color="themeVars['successColor']"><PlayIcon /></n-icon><span>Press to Play!</span></n-button
 			><n-el tag="span" class="error-message" v-if="!isLoggedIn" style="font-size: 32px">You must be logged in to play!</n-el>
 		</n-space>
 		<n-space vertical>
