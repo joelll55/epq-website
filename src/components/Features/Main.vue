@@ -16,6 +16,7 @@ import { NLayout, NLayoutSider, NLayoutContent, NImage } from 'naive-ui'
 const props = defineProps(['title', 'description', 'image'])
 
 const loadedImage = new URL(props.image, import.meta.url).href
+console.log(loadedImage, props.image, import.meta.url)
 </script>
 
 <style scoped>
