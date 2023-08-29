@@ -1,6 +1,11 @@
 <template>
 	<n-space style="padding-top: 10%" align="center" justify="center">
-		<n-card><n-equation class="equation" :katex-options="katexOptions" :value="currentQuestionKatex" /></n-card>
+		<n-card
+			><n-equation class="equation" :katex-options="katexOptions" :value="currentQuestionKatex" /><n-button @click="skipQuestion" type="error" style="margin-top: 20px"
+				>Skip Question (-6 seconds)</n-button
+			></n-card
+		>
+
 		<n-card
 			><n-input autofocus placeholder="Enter Answer" v-model:value="answer" />
 			<n-grid style="padding-top: 10px" :cols="3" x-gap="5px" y-gap="5px">
@@ -20,7 +25,7 @@ import { NSpace, NEquation, NCard, NInput, NButton, NGrid, NGridItem } from 'nai
 import { KatexOptions } from 'katex'
 import { activeKeyUpListeners } from '../../Keybinds/listeners'
 import { onMounted, onUnmounted, ref } from 'vue'
-import { currentGameState, currentQuestionAnswer, currentQuestionKatex, score } from '../gameState'
+import { currentGameState, currentQuestionAnswer, currentQuestionKatex, gameTime, score } from '../gameState'
 import { generateQuestion } from './generate'
 
 const answer = ref('')
@@ -67,6 +72,12 @@ function newQuestion() {
 	currentQuestionAnswer.value = answer
 	currentQuestionKatex.value = question
 }
+
+function skipQuestion() {
+	gameTime.value -= 6000
+	newQuestion()
+}
+
 newQuestion()
 </script>
 
