@@ -15,5 +15,5 @@ export function reset() {
 
 	setTimeout(() => {
 		gameTime.value = 60000
-	}, 300)
+	}, 250)
 }

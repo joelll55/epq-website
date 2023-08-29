@@ -42,7 +42,6 @@ onMounted(async () => {
 
 	pregameUserHighScore.value = leaderboardState.data[difficulty.value].find((user) => user.username === loggedInUser.value)?.score ?? 0
 	pregameHighestScore.value = leaderboardState.highestScore[difficulty.value]
-	console.log('pregame vals', pregameUserHighScore.value, pregameHighestScore.value)
 })
 </script>
 

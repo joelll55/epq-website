@@ -9,7 +9,7 @@
 				<span v-if="!isNewHighScore && !isNewUserHighScore">You did not achieve a new high score this time</span>
 				<n-gradient-text type="success" v-if="isNewUserHighScore">You achieved a new high score!</n-gradient-text>
 				<n-gradient-text type="warning" v-if="isNewHighScore">You acheived the #1 score for this difficulty!</n-gradient-text>
-				<n-button type="info" @click="playAgain">Play Again</n-button></n-space
+				<n-button style="margin-top: 10px" size="large" type="info" @click="playAgain">Play Again</n-button></n-space
 			>
 		</n-card>
 	</n-space>

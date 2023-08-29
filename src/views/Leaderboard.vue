@@ -19,7 +19,6 @@ onMounted(async () => {
 })
 
 function isUserClass(row: RowData) {
-	console.log(row.username === loggedInUser.value)
 	if (row.username === loggedInUser.value) return 'is-user'
 	else return ''
 }

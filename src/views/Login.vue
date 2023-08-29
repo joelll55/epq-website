@@ -13,7 +13,7 @@
 						><n-button type="info" @click="register()" :loading="isLoading" :disabled="!validInput">Register</n-button></n-space
 					></n-space
 				>
-				<span style="font-size: 5rem" v-else
+				<span style="font-size: 5rem; margin-inline: 5%" v-else
 					>Logged in as: <span style="font-weight: bold">{{ loggedInUser }}</span></span
 				>
 			</n-layout-content>

@@ -32,3 +32,7 @@ export const currentQuestionAnswer: Ref<string> = ref('')
 export const pregameUserHighScore: Ref<number> = ref(0)
 
 export const pregameHighestScore: Ref<number> = ref(0)
+
+export const failedState: Ref<boolean> = ref(false)
+
+export const successState: Ref<boolean> = ref(false)

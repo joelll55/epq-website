@@ -53,21 +53,21 @@ export function generateQuestion() {
 		const operation = limitedOperations[Math.floor(Math.random() * limitedOperations.length)]
 		switch (operation) {
 			case '+': {
-				const random1 = Math.floor(Math.random() * 101)
+				const random1 = Math.floor(Math.random() * 301) + 1
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${random1}}` + question.substring(insertIndex)
 				insertIndex = question.length
 				lastPartBracket = false
 				break
 			}
 			case '-': {
-				const random2 = Math.floor(Math.random() * 101)
+				const random2 = Math.floor(Math.random() * 301) + 1
 				question = question.substring(0, insertIndex) + `${i !== 0 ? '-' : ''}{${random2}}` + question.substring(insertIndex)
 				insertIndex = question.length
 				lastPartBracket = false
 				break
 			}
 			case '*': {
-				const random3 = Math.floor(Math.random() * 13)
+				const random3 = Math.floor(Math.random() * 13) + 1
 				if (i === 0) {
 					question = question.substring(0, insertIndex) + `${random3}()` + question.substring(insertIndex)
 					insertIndex = question.length - 1
@@ -90,22 +90,22 @@ export function generateQuestion() {
 				break
 			}
 			case '^': {
-				const base = Math.floor(Math.random() * 13)
-				const power = Math.floor(Math.random() * 4)
+				const base = Math.floor(Math.random() * 13) + 1
+				const power = Math.floor(Math.random() * 3) + 1
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${base}^{${power}}}` + question.substring(insertIndex)
 				insertIndex = question.length
 				lastPartBracket = false
 				break
 			}
 			case 'sqrt': {
-				const random6 = Math.floor(Math.random() * 13)
+				const random6 = Math.floor(Math.random() * 13) + 1
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{\\sqrt{${random6 ** 2}}}` + question.substring(insertIndex)
 				insertIndex = question.length
 				lastPartBracket = false
 				break
 			}
 			case 'log': {
-				const base = Math.floor(Math.random() * 13)
+				const base = Math.floor(Math.random() * 13) + 1
 				const power = Math.floor(Math.random() * 4)
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{logn(${base ** power},${base})}` + question.substring(insertIndex)
 				insertIndex = question.length
