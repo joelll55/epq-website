@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<!--Top section-->
-		<n-layout has-sider class="main-layout" sider-placement="right">
+		<n-layout has-sider class="main-layout" sider-placement="right" :style="`box-shadow: 0px 0px 100px -20px ${themeVars['primaryColor']};border-radius: 35px;`">
 			<n-layout-content class="main-layout-content"
 				><h1>Maths Trainer</h1>
 				<p style="padding-bottom: 15px">Hi! Welcome to Maths Trainer where you will practice your maths skills and compete with others to be the best. Have fun!</p>
@@ -22,12 +22,14 @@
 </template>
 
 <script setup lang="ts">
-import { NLayout, NLayoutSider, NLayoutContent, NButton, NDivider } from 'naive-ui'
+import { NLayout, NLayoutSider, NLayoutContent, NButton, NDivider, useThemeVars } from 'naive-ui'
 import PlayIcon from '../components/Icons/PlayIcon.vue'
 import LeaderboardIcon from '../components/Icons/LeaderboardIcon.vue'
 import Feature from '../components/Features/Main.vue'
 import { homePageFeatures } from '../components/Features/features'
 import MathsIcon from '../components/Icons/MathsIcon.vue'
+
+const themeVars = useThemeVars()
 </script>
 
 <style scoped>
