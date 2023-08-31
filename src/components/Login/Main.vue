@@ -23,11 +23,11 @@
 
 <script setup lang="ts">
 import { NLayout, NLayoutContent, NInput, NSpace, NButton, NEl } from 'naive-ui'
-import { userLoginRequest } from '../components/Login/main'
-import { isLoggedIn, loggedInUser } from '../components/Login/isLoggedIn'
-import { hasFailedLogin, failedLoginMessage } from '../components/Login/loginFailure'
+import { userLoginRequest } from '../Login/main'
+import { isLoggedIn, loggedInUser } from '../Login/isLoggedIn'
+import { hasFailedLogin, failedLoginMessage } from '../Login/loginFailure'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-import { activeKeyUpListeners } from '../components/Keybinds/listeners'
+import { activeKeyUpListeners } from '../Keybinds/listeners'
 
 const username = ref('')
 const password = ref('')

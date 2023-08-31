@@ -9,10 +9,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { NDataTable, NTabs, NTabPane } from 'naive-ui'
-import { leaderboardState } from '../components/Leaderboard/state'
-import { refreshLeaderboard } from '../components/Leaderboard/refresh'
+import { leaderboardState } from '../Leaderboard/state'
+import { refreshLeaderboard } from '../Leaderboard/refresh'
 import { RowData } from 'naive-ui/es/data-table/src/interface'
-import { loggedInUser } from '../components/Login/isLoggedIn'
+import { loggedInUser } from '../Login/isLoggedIn'
 
 onMounted(async () => {
 	await refreshLeaderboard()

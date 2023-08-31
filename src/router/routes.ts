@@ -1,7 +1,7 @@
-import Home from '../views/Home.vue'
+import Home from '../components/Home/Main.vue'
 import Play from '../components/Game/Main.vue'
-import Login from '../views/Login.vue'
-import Leaderboard from '../views/Leaderboard.vue'
+import Login from '../components/Login/Main.vue'
+import Leaderboard from '../components/Leaderboard/Main.vue'
 
 export const routes = [
 	{

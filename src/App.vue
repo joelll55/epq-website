@@ -1,13 +1,10 @@
 <template>
-	<!-- TODO: create a custom colour theme -->
 	<n-config-provider :theme="settingsState.isLightTheme ? null : darkTheme" :theme-overrides="settingsState.isLightTheme ? customLightTheme : customDarkTheme" :katex="katex">
 		<n-global-style />
-		<!-- GLOBAL KEYBINDS -->
 		<div>
 			<!-- Header -->
 			<NavBar />
 			<!-- Main page content -->
-			<!-- TODO - wrap in something -->
 			<div style="padding: 15px"><RouterView /></div>
 		</div>
 	</n-config-provider>

@@ -23,11 +23,11 @@
 
 <script setup lang="ts">
 import { NLayout, NLayoutSider, NLayoutContent, NButton, NDivider, useThemeVars } from 'naive-ui'
-import PlayIcon from '../components/Icons/PlayIcon.vue'
-import LeaderboardIcon from '../components/Icons/LeaderboardIcon.vue'
-import Feature from '../components/Features/Main.vue'
-import { homePageFeatures } from '../components/Features/features'
-import MathsIcon from '../components/Icons/MathsIcon.vue'
+import PlayIcon from '../Icons/PlayIcon.vue'
+import LeaderboardIcon from '../Icons/LeaderboardIcon.vue'
+import Feature from '../Features/Main.vue'
+import { homePageFeatures } from '../Features/features'
+import MathsIcon from '../Icons/MathsIcon.vue'
 
 const themeVars = useThemeVars()
 </script>
