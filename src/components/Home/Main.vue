@@ -17,7 +17,7 @@
 
 		<n-divider />
 
-		<Feature v-for="feature in homePageFeatures" :title="feature.title" :description="feature.description" :image="feature.image" />
+		<Feature v-for="(feature, index) in homePageFeatures" :title="feature.title" :description="feature.description" :image="feature.image" :reverse="index % 2 != 0" />
 	</main>
 </template>
 

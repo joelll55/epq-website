@@ -1,6 +1,6 @@
 <template>
-	<n-layout has-sider class="main-layout">
-		<n-layout-sider class="bg-remove" width="300">
+	<n-layout has-sider class="main-layout" :sider-placement="reverse ? 'right' : 'left'">
+		<n-layout-sider class="bg-remove" width="300" v-if="!reverse">
 			<n-image :src="props.image" width="300" />
 		</n-layout-sider>
 		<n-layout-content class="main-layout-content"
@@ -9,13 +9,16 @@
 				{{ props.description }}
 			</p>
 		</n-layout-content>
+		<n-layout-sider class="bg-remove" width="300" v-if="reverse">
+			<n-image :src="props.image" width="300" />
+		</n-layout-sider>
 	</n-layout>
 </template>
 
 <script setup lang="ts">
 import { NLayout, NLayoutSider, NLayoutContent, NImage } from 'naive-ui'
 
-const props = defineProps(['title', 'description', 'image'])
+const props = defineProps(['title', 'description', 'image', 'reverse'])
 </script>
 
 <style scoped>
