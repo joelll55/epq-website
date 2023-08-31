@@ -74,7 +74,7 @@ function submitAnswer() {
 		// Add 1 to score
 		score.value += 1
 		// Add 3 seconds to timer
-		gameTime.value += 3000
+		gameTime.value += 1500
 		if (gameTime.value > 60000) {
 			gameTime.value = 60000
 		}
