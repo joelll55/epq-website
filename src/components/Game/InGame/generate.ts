@@ -142,7 +142,7 @@ export function generateQuestion() {
 		}
 	}
 
-	// Evaluate answer using evaluatex
+	// 4. Evaluate answer using evaluatex
 	const answer = evaluatex(question, {}, { latex: true })()
 	// Many replaceAll calls are used to convert the format of the question from the latex/ascii format that evalutex uses to the latex format that katex uses
 	question = question
