@@ -53,21 +53,21 @@ export function generateQuestion() {
 		const operation = limitedOperations[Math.floor(Math.random() * limitedOperations.length)]
 		switch (operation) {
 			case '+': {
-				const random1 = Math.floor(Math.random() * 151) + 1
+				const random1 = Math.floor(Math.random() * 101) + 1
 				question = question.substring(0, insertIndex) + `${i !== 0 && !lastPartBracket ? '+' : ''}{${random1}}` + question.substring(insertIndex)
 				insertIndex = question.length
 				lastPartBracket = false
 				break
 			}
 			case '-': {
-				const random2 = Math.floor(Math.random() * 151) + 1
+				const random2 = Math.floor(Math.random() * 101) + 1
 				question = question.substring(0, insertIndex) + `${i !== 0 ? '-' : ''}{${random2}}` + question.substring(insertIndex)
 				insertIndex = question.length
 				lastPartBracket = false
 				break
 			}
 			case '*': {
-				const random3 = Math.floor(Math.random() * 13) + 1
+				const random3 = Math.floor(Math.random() * 12) + 1
 				if (i === 0) {
 					question = question.substring(0, insertIndex) + `${random3}()` + question.substring(insertIndex)
 					insertIndex = question.length - 1
