@@ -14,7 +14,7 @@ export async function userLoginRequest(username: string, password: string, creat
 		}
 	}
 
-	const res = await fetch('https://mathsepqwebsite.pagekite.me/login', request)
+	const res = await fetch('https://joelepq.pagekite.me/login', request)
 	const jsonRes = await res.json()
 	jsonRes.message ??= 'Login failed'
 

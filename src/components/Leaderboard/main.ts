@@ -12,7 +12,7 @@ export async function leaderboardRequest(mode: string, username?: string, score?
 		}
 	}
 
-	const res = await fetch('https://mathsepqwebsite.pagekite.me/leaderboard', request)
+	const res = await fetch('https://joelepq.pagekite.me/leaderboard', request)
 	const jsonRes = await res.json()
 	console.log(jsonRes.message)
 
